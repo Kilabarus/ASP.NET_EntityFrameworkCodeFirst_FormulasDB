@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EntityFrameworkCodeFirstFormulaOneDB.Models.Championship>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Чемпионаты</h2>
+
+<p>
+    @Html.ActionLink("Добавить информацию о чемпионате", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RacingSeries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @EntityFrameworkCodeFirstFormulaOneDB.Models.Enums.GetEnumDescription(item.RacingSeries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.ChampionshipId }) |
+            @Html.ActionLink("Подробности", "Details", new { id = item.ChampionshipId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.ChampionshipId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model EntityFrameworkCodeFirstFormulaOneDB.Models.DriverChampionshipResult
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробности записи</h2>
+
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Championship.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Championship.Title)
+        </dd>
+
+        <dt>
+            Пилот
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.FirstName) @Html.DisplayFor(model => model.Driver.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Points)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { driverId = Model.DriverId, championshipId = Model.ChampionshipId }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>

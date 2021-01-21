@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EntityFrameworkCodeFirstFormulaOneDB.Models.DriverChampionshipResult>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Результаты пилотов на чемпионатах</h2>
+
+<p>
+    @Html.ActionLink("Добавить информацию о результате пилота на чемпионате", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Championship.Title)
+        </th>
+        <th>
+            Пилот
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wins)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Team)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Championship.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver.FirstName) @Html.DisplayFor(modelItem => item.Driver.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wins)
+        </td>
+        <td>
+            @EntityFrameworkCodeFirstFormulaOneDB.Models.Enums.GetEnumDescription(item.Team)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { driverId = item.DriverId, championshipId = item.ChampionshipId }) |
+            @Html.ActionLink("Подробности", "Details", new { driverId = item.DriverId, championshipId = item.ChampionshipId }) |
+            @Html.ActionLink("Удалить", "Delete", new { driverId = item.DriverId, championshipId = item.ChampionshipId })
+        </td>
+    </tr>
+}
+
+</table>
